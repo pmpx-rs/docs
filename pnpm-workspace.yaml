@@ -1,0 +1,36 @@
+minimumReleaseAgeExcludePrune: true
+
+# pnpm's supply-chain policy stays on. It rejects a dependency whose trust level appears to have
+# gone backwards, which is a check worth keeping -- so the exception below is one version, not the
+# policy itself.
+trustPolicy: no-downgrade
+
+# `vite@5.4.21`, which VitePress 1.6.4 depends on, trips the policy:
+#
+#   ERR_PNPM_TRUST_DOWNGRADE  High-risk trust downgrade for "vite@5.4.21" (possible package takeover)
+#
+# It is a false positive. That version is published by the Vite maintainers (yyx990803, patak,
+# antfu), carries SLSA provenance, is not deprecated, and its integrity hash matches what the
+# lockfile records. The policy blocks every `pnpm run` too, not just `pnpm install`, so a clean
+# checkout could not build at all.
+#
+# Pinned to the exact version rather than the bare name `vite`, so that a genuine provenance
+# problem in some *other* vite release is still caught.
+#
+# It has to live here: pnpm treats `trustPolicy` as a security setting and reads it from the
+# workspace manifest, so no `.npmrc` -- project or user level -- can relax it.
+#
+# Remove once VitePress depends on Vite 6 or newer, which the policy does not flag.
+trustPolicyExclude:
+  - vite
+
+shellEmulator: true
+
+# pnpm refuses to run a dependency's install scripts unless it is listed here, which is what the
+# `ERR_PNPM_IGNORED_BUILDS` error means.
+allowBuilds:
+  # VitePress bundles with esbuild.
+  esbuild: true
+  # `pnpm exec simple-git-hooks` writes the hook files into `.git/hooks`. Without this its own
+  # install script never runs, and the hooks silently do not exist.
+  simple-git-hooks: true

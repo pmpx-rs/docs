@@ -1,0 +1,35 @@
+{
+  "name": "pmpx-docs",
+  "private": true,
+  "description": "The pmpx website and documentation, at https://pmpx.dev",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "typecheck": "vue-tsc --noEmit",
+    "check": "node scripts/check-structure.mjs",
+    "check:all": "pnpm lint && pnpm typecheck && pnpm check",
+    "version:clear": "node -e \"require('node:fs').rmSync('node_modules/.cache/pmpx-docs',{recursive:true,force:true});console.log('pmpx version cache cleared')\"",
+    "prepare": "simple-git-hooks"
+  },
+  "nano-staged": {
+    "*.{ts,mts,vue,md}": "eslint --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.5.1",
+    "@types/node": "^26.6.4",
+    "eslint": "~10.12.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "nano-staged": "^1.0.2",
+    "simple-git-hooks": "^2.14.0",
+    "typescript": "~6.0.3",
+    "vitepress": "~1.6.4",
+    "vue": "^3.5.43",
+    "vue-tsc": "^3.3.12"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm nano-staged"
+  }
+}

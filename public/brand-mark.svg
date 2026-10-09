@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="pmpx">
+  <title>pmpx</title>
+
+  <!--
+    The mark, for places that have room to breathe: the hero's brand row, and the browser tab's
+    larger sizes.
+
+    The same fan as `favicon.svg`, at twice the resolution and with the taper the source artwork
+    uses: solid where a connector leaves the root, pale where it arrives. `favicon.svg` explains
+    why the 16px icon is a different drawing of the same shape.
+  -->
+  <defs>
+    <linearGradient id="pmpx-trunk" x1="5" y1="32" x2="13" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1f6fd0" />
+      <stop offset="1" stop-color="#8fb2e2" />
+    </linearGradient>
+    <linearGradient id="pmpx-arm" x1="12" y1="32" x2="46" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8fb2e2" />
+      <stop offset="0.5" stop-color="#a8c3e9" />
+      <stop offset="1" stop-color="#8fb2e2" />
+    </linearGradient>
+  </defs>
+
+  <g fill="none" stroke-linecap="round">
+    <path d="M6 32h7" stroke="url(#pmpx-trunk)" stroke-width="4" />
+    <path d="M12.4 32C21 32 24 15.6 40.8 15.8" stroke="url(#pmpx-arm)" stroke-width="3" />
+    <path d="M12.4 32h28.4" stroke="url(#pmpx-arm)" stroke-width="3" />
+    <path d="M12.4 32C21 32 24 48.4 40.8 48.2" stroke="url(#pmpx-arm)" stroke-width="3" />
+  </g>
+
+  <circle cx="8" cy="32" r="4.8" fill="#1f6fd0" />
+
+  <g fill="#8fb2e2">
+    <circle cx="46" cy="15.6" r="6.4" />
+    <circle cx="46" cy="32" r="6.4" />
+    <circle cx="46" cy="48.4" r="6.4" />
+  </g>
+</svg>

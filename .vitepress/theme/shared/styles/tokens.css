@@ -1,0 +1,130 @@
+/**
+ * pmpx design tokens.
+ *
+ * Kept in one file so the docs pages and the animated home page cannot drift apart: the home
+ * page reads the same variables VitePress paints the rest of the site with.
+ */
+
+:root {
+  --pmpx-primary-1: #4d5bf0;
+  --pmpx-primary-2: #6a77ff;
+  --pmpx-primary-3: #3f4ce0;
+  --pmpx-primary-soft: rgba(77, 91, 240, 0.14);
+
+  /*
+    One accent per ecosystem, each taken from that project's own brand.
+
+    Brand-derived rather than brand-exact, because these are painted on the terminal panel and
+    that panel is dark in both themes. Node's #5FA04E is a mid dark green; Rust's #CE422B is
+    darker still. Both were checked against the panel's #0b0b0f for contrast, and both were
+    lifted until they cleared 4.5:1 without the hue drifting:
+      node 6.6:1   rust 4.9:1   go 7.5:1
+  */
+  --pmpx-node: #64aa51; /* Node.js brand green, lifted for the dark panel */
+  --pmpx-rust: #d9502f; /* rust-lang.org brand red, lifted the same way */
+  --pmpx-go: #00add8; /* Go brand cyan, already bright enough as published */
+
+  --pmpx-mono: ui-monospace, 'SF Mono', SFMono-Regular, 'JetBrains Mono', 'Cascadia Mono',
+    Menlo, Consolas, 'Liberation Mono', monospace;
+  --pmpx-radius: 14px;
+  --pmpx-radius-lg: 20px;
+
+  /* The terminal chrome is dark in both themes -- a terminal is not a page. */
+  --pmpx-term-bg: #0b0b0f;
+  --pmpx-term-bg-2: #12121a;
+  --pmpx-term-border: rgba(255, 255, 255, 0.09);
+  /* Both greys are deliberately above the usual "dim" range for a dark panel: the tree column
+     and the manager names are content, not decoration, and have to survive a phone screen. */
+  --pmpx-term-dim: #6a6a85;
+  --pmpx-term-muted: #a3a3bf;
+  --pmpx-term-text: #f0f0f8;
+
+  --pmpx-glow: rgba(77, 91, 240, 0.45);
+}
+
+.dark {
+  --pmpx-primary-1: #7d8aff;
+  --pmpx-primary-2: #98a3ff;
+  --pmpx-primary-3: #6572f5;
+  --pmpx-primary-soft: rgba(125, 138, 255, 0.16);
+
+  /*
+    The same three hues, lifted again for the darker panel. Only brightness moves; the saturation
+    is left where the brand put it, so these still read as Node green and Rust red rather than as
+    a generic mint and salmon.
+
+    Node is the sensitive one. An earlier value of #8cc63f measured 9.6:1 and rendered as lime --
+    contrast alone does not make something look like the right colour, so the hue was pulled back
+    toward the brand's yellow-green while keeping the lift:
+      node 7.6:1   rust 5.5:1   go (unchanged)
+  */
+  --pmpx-node: #68b356;
+  --pmpx-rust: #e0623f;
+  --pmpx-go: #26c6e8;
+
+  --pmpx-term-bg: #08080b;
+  --pmpx-term-bg-2: #101017;
+  --pmpx-term-border: rgba(255, 255, 255, 0.08);
+
+  --pmpx-glow: rgba(125, 138, 255, 0.4);
+}
+
+/* VitePress brand override. */
+:root {
+  --vp-c-brand-1: var(--pmpx-primary-1);
+  --vp-c-brand-2: var(--pmpx-primary-2);
+  --vp-c-brand-3: var(--pmpx-primary-3);
+  --vp-c-brand-soft: var(--pmpx-primary-soft);
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: #fff;
+  --vp-button-brand-bg: var(--pmpx-primary-3);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: #fff;
+  --vp-button-brand-hover-bg: var(--pmpx-primary-2);
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: #fff;
+  --vp-button-brand-active-bg: var(--pmpx-primary-1);
+
+  --vp-font-family-mono: var(--pmpx-mono);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(
+    100deg,
+    var(--pmpx-primary-1),
+    var(--pmpx-node) 55%,
+    var(--pmpx-go)
+  );
+}
+
+/* A monospaced `pmpx` wordmark in the nav, so the brand reads as a command. */
+.VPNavBarTitle .title {
+  font-family: var(--pmpx-mono);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.VPNavBarTitle .logo {
+  height: 26px;
+  width: 26px;
+}
+
+/* Inline `code` in prose should not shout. */
+.vp-doc code {
+  font-family: var(--pmpx-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

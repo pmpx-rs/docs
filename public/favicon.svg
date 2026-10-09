@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!--
+    The favicon.
+
+    A dedicated file rather than the navigation mark, because a favicon is not drawn in browser
+    chrome that adapts: it sits in a tab, at 16px, on whatever colour the tab bar happens to be.
+    So this version drops the taper and uses one flat blue for the connectors, because a
+    gradient collapses into mush at 16px, and gives the endpoints more weight so the fan still
+    reads as three separate things.
+  -->
+  <g fill="none" stroke="#5b93e0" stroke-width="2" stroke-linecap="round">
+    <path d="M3.2 16h3.4" />
+    <path d="M6.4 16C10.6 16 12 8.4 20.2 8.2" />
+    <path d="M6.4 16h13.8" />
+    <path d="M6.4 16C10.6 16 12 23.6 20.2 23.8" />
+  </g>
+  <circle cx="4" cy="16" r="2.6" fill="#1f6fd0" />
+  <g fill="#7ea9e0">
+    <circle cx="22.8" cy="8.2" r="3.4" />
+    <circle cx="22.8" cy="16" r="3.4" />
+    <circle cx="22.8" cy="23.8" r="3.4" />
+  </g>
+</svg>

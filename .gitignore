@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# VitePress build output and dev cache
+dist/
+.vitepress/cache/
+.vitepress/dist/
+.vitepress/.temp/
+
+# The version fetched from crates.io, if a cache is ever written outside node_modules
+.vitepress/.version-cache.json
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
